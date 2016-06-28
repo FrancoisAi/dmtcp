@@ -1193,9 +1193,6 @@ static void mmapfile(int fd, void *buf, size_t size, int prot, int flags)
   int mtcp_sys_errno;
   void *addr;
   int rc;
-MTCP_PRINTF("%s: buf: %p, size: %d\n", __FUNCTION__, buf, size);
-MTCP_PRINTF("%s: fd: %d, lseek: %d\n", __FUNCTION__, fd, mtcp_sys_lseek(fd, 0, SEEK_CUR));
-MTCP_PRINTF("%s: prot: %d, flags: %d\n", __FUNCTION__, prot, flags);
 
   /* Use mmap for this portion of checkpoint image. */
   addr = mtcp_sys_mmap(buf, size, prot, flags,
