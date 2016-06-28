@@ -29,6 +29,7 @@
 //         this extra declaration.
 #define FOR_SYSCALLSREAL_C
 
+#include <signal.h>
 #include <malloc.h>
 #include <pthread.h>
 #include <dlfcn.h>
@@ -711,6 +712,7 @@ LIB_PRIVATE
 int _real_sigaction(int signum, const struct sigaction *act, struct sigaction *oldact) {
   REAL_FUNC_PASSTHROUGH (sigaction) (signum, act, oldact);
 }
+<<<<<<< 72a59d968ff21627c97e389b18198629430dd823:src/syscallsreal.c
 
 #if !__GLIBC_PREREQ(2,21)
 LIB_PRIVATE
@@ -718,6 +720,8 @@ int _real_sigvec(int signum, const struct sigvec *vec, struct sigvec *ovec) {
   REAL_FUNC_PASSTHROUGH (sigvec) (signum, vec, ovec);
 }
 #endif
+=======
+>>>>>>> This fixes the bug until it starts to restart on vdso:dmtcp/src/syscallsreal.c
 
 //set the mask
 LIB_PRIVATE
