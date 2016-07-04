@@ -502,6 +502,12 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 
+# FIXME maybe this is not the right location for this operation
+ifeq ($(FAST_RESTART),yes)
+  CXXFLAGS += -DFAST_RST_VIA_MMAP 
+  $(info Update CXXFLAGS for fast restart, new value: $(CXXFLAGS))
+endif
+
 # not a GNU package. You can remove this line, if
 # have all needed files, that a GNU package needs
 # TODO(kapil): Add 'subdir-objects after automake 1.16 has been released.
