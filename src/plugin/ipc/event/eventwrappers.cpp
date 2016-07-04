@@ -165,7 +165,7 @@ extern "C" int signalfd(int fd, const sigset_t *mask, int flags)
 #endif
 
 #ifdef HAVE_SYS_EVENTFD_H
-extern "C" int eventfd(unsigned int /*EVENTFD_VAL_TYPE*/ initval, int flags)
+extern "C" int eventfd(EVENTFD_VAL_TYPE initval, int flags)
 {
   DMTCP_PLUGIN_DISABLE_CKPT();
   int ret = _real_eventfd(initval, flags);

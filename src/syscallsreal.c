@@ -713,6 +713,13 @@ int _real_sigaction(int signum, const struct sigaction *act, struct sigaction *o
   REAL_FUNC_PASSTHROUGH (sigaction) (signum, act, oldact);
 }
 
+#if !__GLIBC_PREREQ(2,21)
+LIB_PRIVATE
+int _real_sigvec(int signum, const struct sigvec *vec, struct sigvec *ovec) {
+  REAL_FUNC_PASSTHROUGH (sigvec) (signum, vec, ovec);
+}
+#endif
+
 //set the mask
 LIB_PRIVATE
 int _real_sigblock(int mask) {
