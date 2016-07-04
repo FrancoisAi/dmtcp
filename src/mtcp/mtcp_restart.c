@@ -862,7 +862,6 @@ static int read_one_memory_area(int fd)
     }
   }
 
-#define FAST_RST_VIA_MMAP
 #ifdef FAST_RST_VIA_MMAP
     //int should_mmap_ckpt_image = 1;
     else if ( 1 /* should_mmap_ckpt_image */ && (area.flags & MAP_ANONYMOUS)) {
