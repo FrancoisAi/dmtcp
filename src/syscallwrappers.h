@@ -32,6 +32,7 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <signal.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <poll.h>
@@ -86,8 +87,6 @@
 #  define EPOLL_CTL_MOD 3 /* Change file decriptor epoll_event structure.  */
 # endif
 #endif
-
-#include <signal.h>
 
 void _dmtcp_setup_trampolines();
 
@@ -365,6 +364,9 @@ LIB_PRIVATE extern __thread int thread_performing_dlopen_dlsym;
                       struct sigaction *oldact);
   int _real_rt_sigaction(int signum, const struct sigaction *act,
                          struct sigaction *oldact);
+#if !__GLIBC_PREREQ(2,21)
+  int _real_sigvec(int sig, const struct sigvec *vec, struct sigvec *ovec);
+#endif
 
   //set the mask
   int _real_sigblock(int mask);

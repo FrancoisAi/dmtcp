@@ -29,7 +29,6 @@
 //         this extra declaration.
 #define FOR_SYSCALLSREAL_C
 
-#include <signal.h>
 #include <malloc.h>
 #include <pthread.h>
 #include <dlfcn.h>
